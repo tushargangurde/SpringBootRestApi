@@ -22,7 +22,7 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Course getCourse(long courseId) {
-		return courseDao.getOne(courseId);
+		return courseDao.findById(courseId).get();
 	}
 
 	@Override
@@ -39,8 +39,7 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public void deleteCourse(long courseId) {
-		Course course = courseDao.getOne(courseId);
-		courseDao.delete(course);
+		courseDao.deleteById(courseId);
 	}
 
 }

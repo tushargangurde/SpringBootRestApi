@@ -42,12 +42,13 @@ public class CourseController {
 		return courseService.updateCourse(course);
 	}
 
-	@DeleteMapping("/courses/delete/{id)")
-	public ResponseEntity<HttpStatus> updateCourse(@PathVariable long courseId) {
+	@DeleteMapping("/courses/delete/{courseId}")
+	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long courseId) {
 		try {
 			courseService.deleteCourse(courseId);
 			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
